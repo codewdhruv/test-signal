@@ -1,0 +1,35 @@
+pipeline:
+  name: test-buildjet-signal
+  identifier: testbuildjetsignal
+  projectIdentifier: DhrubaCI
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: dhrubaaccountconnector
+        repoName: test-signal
+        build: <+input>
+  stages:
+    - stage:
+        name: echo
+        identifier: echo
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: echo
+                  identifier: echo
+                  spec:
+                    shell: Sh
+                    command: echo "hi"
